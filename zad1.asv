@@ -20,25 +20,21 @@ for i=1:max_iter
             else
                a=Wynik(iteracje,1);
             end
-            if( abs(a-b)<epsilon)
+            if(abs(Wynik(iteracje,2))<epsilon || abs(a-b)<epsilon)
                 break;
             end
             
         case 'sieczne'
-            c=b-((funkcja_zad1(b)*(b-a))/(funkcja_zad1(b)-funkcja_zad1(a)));
-           
-            a=b;
-            b=c;
-            if abs(funkcja_zad1(a))<abs(funkcja_zad1(b))
-                 Wynik(iteracje,1)=a;
-            else
-                Wynik(iteracje,1)=b;
-            end
+            Wynik(iteracje,1)=b-((funkcja_zad1(b)*(b-a))/(funkcja_zad1(b)-funkcja_zad1(a)));
             Wynik(iteracje,2)=funkcja_zad1(Wynik(iteracje,1));
+            a=b;
+            b=Wynik(iteracje,1);
             
-            if(abs(a-b)<epsilon)
+            if(abs(Wynik(iteracje,2))<epsilon || abs(a-b)<epsilon)
                 break;
             end
+            
+            
         case 'Newton'
             Wynik(iteracje,1)=a-funkcja_zad1(a)/funkcja_poch_zad1(a);
             Wynik(iteracje,2)=funkcja_zad1(Wynik(iteracje,1));
@@ -47,12 +43,8 @@ for i=1:max_iter
             error('B³êdna metoda');
     end
     
-    if abs(Wynik(iteracje,2))<epsilon
-        break;
-    end
-    
+    Wynik=Wynik(1:iteracje,:);
     
 end
-Wynik=Wynik(1:iteracje,:);
 iteracje
 end
