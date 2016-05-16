@@ -1,0 +1,8 @@
+function [ y ] = pochodna_wielomianu( x,n,W )
+%obliczanie wartoœci pochodnej wielomianu
+for i=1:n
+   W2(i)
+end
+
+end
+

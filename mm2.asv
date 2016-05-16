@@ -1,0 +1,14 @@
+function [ Wynik ] = mm2(f, x, iter )
+df=pochodna(f);%pierw
+ddf=pochodna(df);
+Wynik=zeros(iter,1);
+for i=1:iter
+    if abs(wielomian(x,df)+sqrt(wielomian(x,df)^2-2*wielomian(x,f)*wielomian(x,ddf)))>abs(wielomian(x,df)-sqrt(wielomian(x,df)^2-2*wielomian(x,f)*wielomian(x,ddf)))
+        z=-2*wielomian(x,f)/(wielomian(x,df)+sqrt(wielomian(x,df)^2-2*wielomian(x,f)*wielomian(x,ddf)));
+    else
+        z=-2*wielomian(x,f)/(wielomian(x,df)-sqrt(wielomian(x,df)^2-2*wielomian(x,f)*wielomian(x,ddf)));
+    end
+    Wynik(i)=x+z;
+    x=x+z;
+end
+

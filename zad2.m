@@ -1,9 +1,13 @@
-function [ Zera ] = zad2( x, iter )
-%UNTITLED7 Summary of this function goes here
-%   Detailed explanation goes here
-Zera(iter:1);
+function [ Wynik ] = zad2()
+W=[-1 -2 5 2 1]; %zadany wielomian
+n=length(W)-1;%stopień wielomianu
+Wynik=zeros(4,1);%alokacja pamięci
+pocz=0;%punkt startowy
 for i=1:n
-    if abs(funkcja_pochodna_zad2(x)+sqrt(funkcja_pochodna_zad2(x)^2-2*funkcja_zad2(x)*funkcja_2pochodna_zad2(x))
-
+   temp=mm2(W,pocz,20); %wyznaczenie pierwiastka
+   Wynik(i)=temp(length(temp));%pierwiastek jest ostatnim elementem wetora wyniku
+   pocz=Wynik(i);%nowy punkt startowy
+   W=schemat_hornera(W,Wynik(i));%deflacja wielomianu
+end
 end
 
